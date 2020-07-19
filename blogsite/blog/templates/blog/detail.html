@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{% static 'name-logo.png' %}">
+        </div>
+        <div>
+            <a href="">Home</a>
+            <a href="#">Authors</a>
+        </div>
+    </div>
+    <div class="div-top" style="top: 50px;position: absolute;">
+    <h1>Blog Details</h1>
+    <ul>
+        <li>Title: {{ obj.blog_title }}</li>
+        <li>Author: {{ obj.author_name }}</li>
+        <li>Content: {{ obj.blog_content }}</li>
+    </ul>
+    </div>
+</body>
+</html>

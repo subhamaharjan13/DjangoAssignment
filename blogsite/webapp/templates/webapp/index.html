@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+    <title>My Blog</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{% static 'name-logo.png' %}">
+        </div>
+        <div>
+            <a href="/webapp/list/">Blog List</a>
+            <a href="#">Authors</a>
+        </div>
+    </div>
+
+    <div class="container" style="background-image: url('/static/bg.jpg')">
+        <h1>Share Your Story With Us</h1>
+        <a href="/webapp/create/" id="button">Create a Blog</a>
+        <!-- {% for u in data %}
+            <a href="/blog/create/{{ u.blog_id }}" id="button">Create a Blog</a>
+        {% endfor %} -->
+    </div>
+    
+</body>
+</html>
