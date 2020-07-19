@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import BlogInfo
-from .forms import BlogInfoModelForm
+from .models import BlogInfo, Author
+from .forms import BlogInfoModelForm, AuthorModelForm
 
 def home(request):
     return render(request, 'webapp/index.html')
@@ -16,6 +16,22 @@ def detail_view_of_blog(request, user_id):
     obj = BlogInfo.objects.get(id=user_id)
     return render(request, 'webapp/detail.html', context={
         'obj':obj
+    })
+
+def add_author(request):
+    if request.method == 'POST':
+        form = AuthorModelForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            print("Form is valid")
+            form.save()
+            return redirect('/webapp/author/')
+        else:
+            print("Form is invalid")
+    else:
+        form = AuthorModelForm()
+    return render(request, 'webapp/add_author.html', {
+        'form': form
     })
 
 def create_blog_info(request):
@@ -52,7 +68,13 @@ def update_blog_info(request, user_id):
     })
 
 def delete_blog_info(request, user_id):
-    # if request.method == 'POST':
     blog_object = get_object_or_404(BlogInfo, id=user_id)
     blog_object.delete()
     return redirect('/webapp/list/')
+
+def list_all_author(request):
+    author_data = Author.objects.all()
+    context = {
+        'author_data': author_data
+    }
+    return render(request, 'webapp/authors.html', context=context)

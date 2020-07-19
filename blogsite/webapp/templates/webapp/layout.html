@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'layout.css' %}" rel="stylesheet" type="text/css">
+    <title>My Blog</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="{% static 'name-logo.png' %}">
+        </div>
+        <div>
+            <a href="/webapp/list/">Blog List</a>
+            <a href="/webapp/author/">Authors</a>
+        </div>
+    </div>
+    
+</body>
+</html>
